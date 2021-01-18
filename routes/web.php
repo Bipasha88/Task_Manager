@@ -40,5 +40,9 @@ Route::get('/', function () {
         ),
      );
     
-    return view('welcome', ['tasks'=> $tasks]);
+    return view('welcome', compact('tasks'));
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
