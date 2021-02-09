@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Repository\TaskRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    private $taskRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TaskRepository $taskRepository)
     {
         $this->middleware('auth');
+        $this->taskRepository=$taskRepository;
     }
 
     /**
@@ -25,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $task=$this->taskRepository->getRecentTasksOfCurrentUser();
         return view('home',compact('tasks'));
     }
 }

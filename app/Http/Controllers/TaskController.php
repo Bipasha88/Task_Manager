@@ -22,4 +22,14 @@ class TaskController extends Controller
 
         return view('home',compact('tasks'));
     }
+
+    public function create(){
+
+        return view('tasks.create');
+    }
+
+    public function save(Request $request){
+
+        dd($request);
+    }
 }
