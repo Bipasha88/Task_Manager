@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Task-App</title>
+        <title>
+            {{config('app.name')}}
+        </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,7 +26,7 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-              <!-- @if (Route::has('login'))
+              @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
@@ -36,22 +38,18 @@
                         @endif
                     @endauth
                 </div>
-            @endif 
- -->
-                @foreach($tasks as $task)
-                <div class="card" style="width: 18rem;">
-                    <img src="https://picsum.photos/id/237/200/300" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">{{ $task['name'] }}</h5>
-                    <p class="card-text">{{ $task['description'] }}</p>
-                    <a href="#" class="btn btn-primary">Ends at:{{ $task['end_time'] }}</a>
-  </div>
-</div>
-                @endforeach
-            
-        </div>
 
+            @endif
+                    <div class="flex items-center">
+                        <h1>   Welcome to <span class="text-secondary ">{{config('app.name')}}</span></h1>
+                    </div>
+
+
+
+                </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
+
     </body>
+
 </html>
