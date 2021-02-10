@@ -30,6 +30,18 @@ class TaskController extends Controller
 
     public function save(Request $request){
 
-        dd($request);
+        $this->validate($request,[
+            "name"=>'required|min:5|max:255',
+            "description"=>'nullable|string',
+            "end_time"=>'required|after:today',
+        ]);
+        $savedTask=$this->taskRepository->createTask($request->except('_token'));
+
+        if ($savedTask){
+            return redirect('/home');
+        }
+        else
+            return view('404');
+
     }
 }

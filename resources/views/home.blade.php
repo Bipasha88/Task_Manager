@@ -18,6 +18,19 @@
                         You don't have any tasks yet
                         Maybe,<a href="">Create</a> one?
                         @else
+                        <div class="row">
+                            @foreach($tasks as $task)
+                                <div class="col-md-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$task->name}}</h5>
+                                            <p class="card-text">{{$task->description}}</p>
+                                            <span class="text-primary">Ends at: {{$task->end_time}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                         @endif
                 </div>
             </div>

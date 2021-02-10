@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $task=$this->taskRepository->getRecentTasksOfCurrentUser();
+        $tasks=$this->taskRepository->getRecentTasksOfCurrentUser();
         return view('home',compact('tasks'));
     }
 }
