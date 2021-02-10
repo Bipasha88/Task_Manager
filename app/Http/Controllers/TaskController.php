@@ -20,7 +20,7 @@ class TaskController extends Controller
 
         $tasks=$this->taskRepository->getTasksOfCurrentUser();
 
-        return view('home',compact('tasks'));
+        return view('tasks.list',compact('tasks'));
     }
 
     public function create(){
@@ -38,10 +38,16 @@ class TaskController extends Controller
         $savedTask=$this->taskRepository->createTask($request->except('_token'));
 
         if ($savedTask){
-            return redirect('/home');
+            return redirect(route('task.all'));
         }
         else
             return view('404');
 
+    }
+
+    public function delete($id){
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return redirect()->route('task.all');
     }
 }
